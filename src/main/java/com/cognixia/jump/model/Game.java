@@ -13,7 +13,6 @@ public class Game {
 	@Id
 	private String id;
 
-	@Indexed(unique = true)
 	@NotBlank
 	private String name;
 
@@ -24,7 +23,7 @@ public class Game {
 	private int stock;
 
 	@NotBlank
-	private String[] platform;
+	private String platform;
 
 	@NotBlank
 	private String[] genre;
@@ -40,14 +39,14 @@ public class Game {
 	}
 
 	public Game(String id, @NotBlank String name, @NotBlank double price, @NotBlank int stock,
-			@NotBlank String[] platforms, @NotBlank String[] genres, @NotBlank int releaseYear,
+			@NotBlank String platform, @NotBlank String[] genres, @NotBlank int releaseYear,
 			@NotBlank String developer) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.stock = stock;
-		this.platform = platforms;
+		this.platform = platform;
 		this.genre = genres;
 		this.releaseYear = releaseYear;
 		this.developer = developer;
@@ -85,11 +84,11 @@ public class Game {
 		this.stock = stock;
 	}
 
-	public String[] getPlatform() {
+	public String getPlatform() {
 		return platform;
 	}
 
-	public void setPlatforms(String[] platform) {
+	public void setPlatforms(String platform) {
 		this.platform = platform;
 	}
 
@@ -119,9 +118,9 @@ public class Game {
 
 	@Override
 	public String toString() {
-		return "Game [id=" + id + ", name=" + name + ", price=" + price + ", stock=" + stock + ", platforms="
-				+ Arrays.toString(platform) + ", genres=" + Arrays.toString(genre) + ", releaseYear=" + releaseYear
-				+ ", developer=" + developer + "]";
+		return "Game [id=" + id + ", name=" + name + ", price=" + price + ", stock=" + stock + ", platform=" + platform
+				+ ", genres=" + Arrays.toString(genre) + ", releaseYear=" + releaseYear + ", developer=" + developer
+				+ "]";
 	}
 
 }

@@ -16,4 +16,6 @@ public interface GameRepository extends MongoRepository<Game, String> {
 
 	List<Game> findByPriceLessThan(double price);
 
+	List<Game> findByReleaseYear(int year);
+
 }

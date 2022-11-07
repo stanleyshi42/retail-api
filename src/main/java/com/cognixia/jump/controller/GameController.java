@@ -73,4 +73,10 @@ public class GameController {
 		List<Game> found = service.findByPriceLessThan(price);
 		return found;
 	}
+
+	@GetMapping("/game/year/{year}")
+	public List<Game> findByReleaseYear(@PathVariable int year) {
+		List<Game> found = service.findByReleaseYear(year);
+		return found;
+	}
 }

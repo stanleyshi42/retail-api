@@ -60,4 +60,8 @@ public class GameService {
 	public List<Game> findByPriceLessThan(double price){
 		return repo.findByPriceLessThan(price);
 	}
+
+	public List<Game> findByReleaseYear(int year) {
+		return repo.findByReleaseYear(year);
+	}
 }

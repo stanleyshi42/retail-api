@@ -36,11 +36,16 @@ public class SecurityConfiguration {
 		http.csrf().disable()
 			.authorizeRequests()
 			.antMatchers("/authenticate").permitAll()
-			.antMatchers(HttpMethod.POST, "/api/user").permitAll()
 			.antMatchers(HttpMethod.GET, "/api/user").hasRole("ADMIN")
-			.antMatchers(HttpMethod.DELETE, "/api/user").hasRole("ADMIN")
 			.antMatchers(HttpMethod.PUT, "/api/user").hasRole("ADMIN")
+			.antMatchers(HttpMethod.DELETE, "/api/user").hasRole("ADMIN")
+			
 			.antMatchers(HttpMethod.POST, "/api/game").hasRole("ADMIN")
+			.antMatchers(HttpMethod.PUT, "/api/game").hasRole("ADMIN")
+			.antMatchers(HttpMethod.DELETE, "/api/game").hasRole("ADMIN")
+			
+			.antMatchers(HttpMethod.PUT, "/api/order").hasRole("ADMIN")
+			
 			.antMatchers("/api").authenticated()
 			.and()
 			.sessionManagement().sessionCreationPolicy( SessionCreationPolicy.STATELESS );
@@ -53,7 +58,7 @@ public class SecurityConfiguration {
 	@Bean
 	protected PasswordEncoder encoder() {
 		// plain text encoder -> encode/encrypt the password
-		//return NoOpPasswordEncoder.getInstance();
+		// return NoOpPasswordEncoder.getInstance();
 
 		// encrypt the password with the bcrypt algorithm
 		return new BCryptPasswordEncoder();
